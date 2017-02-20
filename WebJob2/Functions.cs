@@ -1,36 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Calculate;
 using Microsoft.Azure.WebJobs;
 using Microsoft.ServiceBus.Messaging;
 
-
-
-namespace WebJob1
+namespace WebJob2
 {
     public class Functions
     {
-
-
-        public static void ProcessQueueMessage([ServiceBusTrigger("bus1")] BrokeredMessage message, TextWriter log)
+        // This function will get triggered/executed when a new message is written 
+        // on an Azure Queue called queue.
+        public static void ProcessQueueMessage([ServiceBusTrigger("bus2")] BrokeredMessage message, TextWriter log)
         {
             CalculateJob calculatejob = new CalculateJob();
             calculatejob.DoJob(message);
 
         }
-
-
-       
 
     }
 }
