@@ -6,10 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.ServiceBus;
+using Microsoft.ServiceBus.Messaging;
 
 namespace WebJob1
 {
-    // To learn more about Microsoft Azure WebJobs SDK, please see https://go.microsoft.com/fwlink/?LinkID=320976
     class Program
     {
   
@@ -17,14 +17,12 @@ namespace WebJob1
         {
             var config = new JobHostConfiguration();
             ServiceBusConfiguration serviceBusConfig = new ServiceBusConfiguration();
-            serviceBusConfig.MessageOptions.MaxConcurrentCalls = 32;
+            serviceBusConfig.MessageOptions.MaxConcurrentCalls = 64;
+            serviceBusConfig.MessageOptions.AutoRenewTimeout = new TimeSpan(14,0,0,0); 
             config.UseServiceBus(serviceBusConfig);
 
             JobHost host = new JobHost(config);
             host.RunAndBlock();
-
-
-
          
         }
     }

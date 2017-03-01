@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.WebJobs;
+﻿using System;
+using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.ServiceBus;
 
 namespace WebJob2
@@ -11,6 +12,7 @@ namespace WebJob2
             JobHostConfiguration config = new JobHostConfiguration();
             ServiceBusConfiguration serviceBusConfig = new ServiceBusConfiguration();
             serviceBusConfig.MessageOptions.MaxConcurrentCalls = 32;
+            serviceBusConfig.MessageOptions.AutoRenewTimeout = new TimeSpan(14, 0, 0, 0);
             config.UseServiceBus(serviceBusConfig);
 
             JobHost host = new JobHost(config);

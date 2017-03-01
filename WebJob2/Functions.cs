@@ -16,8 +16,8 @@ namespace WebJob2
         // on an Azure Queue called queue.
         public static void ProcessQueueMessage([ServiceBusTrigger("bus2")] BrokeredMessage message, TextWriter log)
         {
-            CalculateJob calculatejob = new CalculateJob();
-            calculatejob.DoJob(message);
+            var calculatejob = new CalculateEngine();
+            calculatejob.DoJob(message.MessageId);
 
         }
 

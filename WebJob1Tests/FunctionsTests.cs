@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.ServiceBus.Messaging;
 
+
+
 namespace WebJob1.Tests
 {
     [TestClass()]
@@ -19,7 +21,7 @@ namespace WebJob1.Tests
         public void ProcessQueueMessageTest1()
         {
             BrokeredMessage b = new BrokeredMessage();
-            b.MessageId = "03C4A41E-985D-43C3-A5AA-FE8E32B9130B";
+            b.MessageId = "9661e6a0-5b89-48b8-bbee-b21762fcf839";
             WebJob1.Functions.ProcessQueueMessage(b, new StringWriter() );
         }
 
@@ -27,8 +29,11 @@ namespace WebJob1.Tests
         public void ProcessQueueMessageTest2()
         {
             BrokeredMessage b = new BrokeredMessage();
-            b.MessageId = "7A0BE2E4-10BB-4989-A74E-DC2AB996CD1C";
+            b.MessageId = "4733f3bf-a452-4364-92eb-dca1b30817f1";
             WebJob2.Functions.ProcessQueueMessage(b, new StringWriter());
         }
+
+
+      
     }
 }
