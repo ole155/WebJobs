@@ -11,8 +11,8 @@ namespace WebJob2
         {
             JobHostConfiguration config = new JobHostConfiguration();
             ServiceBusConfiguration serviceBusConfig = new ServiceBusConfiguration();
-            serviceBusConfig.MessageOptions.MaxConcurrentCalls = 32;
-            serviceBusConfig.MessageOptions.AutoRenewTimeout = new TimeSpan(14, 0, 0, 0);
+            serviceBusConfig.MessageOptions.MaxConcurrentCalls = 16;
+            serviceBusConfig.MessageOptions.AutoRenewTimeout = new TimeSpan(7, 0, 0, 0);
             config.UseServiceBus(serviceBusConfig);
 
             JobHost host = new JobHost(config);
